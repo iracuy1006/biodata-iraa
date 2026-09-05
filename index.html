@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,22 +16,109 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #ffd6e7, #d8e7ff);
+            background-size: 200% 200%;
             min-height: 100vh;
 
             display: flex;
             justify-content: center;
             align-items: center;
+
+            animation: backgroundGerak 8s ease infinite;
+
+            overflow-x: hidden;
         }
 
+        /* =========================
+           BUNGA JATUH
+           ========================= */
+
+        .bunga {
+            position: fixed;
+            top: -50px;
+            font-size: 25px;
+            pointer-events: none;
+            animation: bungaJatuh linear infinite;
+            z-index: 1;
+        }
+
+        .bunga:nth-child(1) {
+            left: 10%;
+            animation-duration: 7s;
+            animation-delay: 0s;
+        }
+
+        .bunga:nth-child(2) {
+            left: 25%;
+            animation-duration: 9s;
+            animation-delay: 2s;
+        }
+
+        .bunga:nth-child(3) {
+            left: 45%;
+            animation-duration: 6s;
+            animation-delay: 1s;
+        }
+
+        .bunga:nth-child(4) {
+            left: 65%;
+            animation-duration: 8s;
+            animation-delay: 3s;
+        }
+
+        .bunga:nth-child(5) {
+            left: 80%;
+            animation-duration: 7s;
+            animation-delay: 1.5s;
+        }
+
+        .bunga:nth-child(6) {
+            left: 92%;
+            animation-duration: 10s;
+            animation-delay: 4s;
+        }
+
+        @keyframes bungaJatuh {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(50vh) translateX(40px) rotate(180deg);
+            }
+
+            100% {
+                transform: translateY(110vh) translateX(-40px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* =========================
+           CONTAINER
+           ========================= */
+
         .container {
+            position: relative;
+            z-index: 2;
+
             background: white;
             width: 90%;
             max-width: 550px;
+
             padding: 35px;
+
             text-align: center;
 
             border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.15);
+
+            animation: masuk 0.8s ease;
         }
 
         h1 {
@@ -44,29 +132,43 @@
             line-height: 1.6;
         }
 
+        /* =========================
+           MENU
+           ========================= */
+
         .menu {
             display: flex;
             flex-direction: column;
+
             gap: 15px;
+
             margin-top: 25px;
         }
 
         button {
             border: none;
+
             padding: 15px;
+
             border-radius: 12px;
+
             font-size: 16px;
+
             color: white;
+
             cursor: pointer;
+
             transition: 0.3s;
         }
 
         button:hover {
-            transform: scale(1.05);
-            opacity: 0.9;
-        }
+            transform: scale(1.05) translateY(-3px);
 
-        /* Warna tombol */
+            opacity: 0.9;
+
+            box-shadow:
+                0 8px 18px rgba(0, 0, 0, 0.15);
+        }
 
         .youtube {
             background-color: #ff0000;
@@ -85,59 +187,228 @@
             background-color: #7b61ff;
         }
 
-        /* Kotak biodata */
+        /* =========================
+           FUN FACTS
+           ========================= */
+
+        .funfacts {
+            margin-top: 30px;
+        }
+
+        .funfacts h2 {
+            color: #d94f83;
+
+            margin-bottom: 15px;
+        }
+
+        .cards {
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 12px;
+        }
+
+        .card {
+            background: linear-gradient(
+                135deg,
+                #fff0f6,
+                #f0edff
+            );
+
+            padding: 18px 10px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s;
+
+            animation: kartuMasuk 0.8s ease;
+
+            cursor: default;
+        }
+
+        .card:hover {
+            transform: translateY(-7px) rotate(1deg);
+
+            box-shadow:
+                0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Kartu musik bisa diklik */
+
+        .musik {
+            cursor: pointer;
+        }
+
+        .musik:hover {
+            transform: translateY(-7px) scale(1.03);
+        }
+
+        .card .emoji {
+            font-size: 30px;
+        }
+
+        .card h3 {
+            margin: 8px 0 5px;
+
+            color: #7b61ff;
+
+            font-size: 17px;
+        }
+
+        .card p {
+            margin: 0;
+
+            color: #555;
+
+            font-size: 14px;
+
+            line-height: 1.4;
+        }
+
+        .musik small {
+            display: block;
+
+            margin-top: 8px;
+
+            color: #d94f83;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           BIODATA
+           ========================= */
 
         #biodataBox {
             display: none;
 
             margin-top: 25px;
+
             padding: 20px;
 
             background-color: #f8f1ff;
+
             border-radius: 15px;
 
             text-align: left;
 
-            animation: muncul 0.5s ease;
+            animation: biodataMasuk 0.5s ease;
         }
 
         #biodataBox h2 {
             color: #7b61ff;
+
             text-align: center;
         }
 
         #biodataBox p {
             font-size: 16px;
+
             line-height: 1.6;
         }
 
         .back {
             background-color: #777;
+
             margin-top: 10px;
+
             width: 100%;
         }
 
-        /* Animasi */
+        /* =========================
+           ANIMASI
+           ========================= */
 
-        @keyframes muncul {
+        @keyframes masuk {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+
+                transform:
+                    scale(0.9)
+                    translateY(30px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+
+                transform:
+                    scale(1)
+                    translateY(0);
             }
         }
+
+        @keyframes kartuMasuk {
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(20px)
+                    scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        @keyframes biodataMasuk {
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(20px)
+                    scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+        @keyframes backgroundGerak {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
     </style>
 </head>
 
 <body>
 
+    <!-- BUNGA -->
+
+    <div class="bunga">🌸</div>
+    <div class="bunga">🌷</div>
+    <div class="bunga">🌸</div>
+    <div class="bunga">🌺</div>
+    <div class="bunga">🌷</div>
+    <div class="bunga">🌸</div>
+
+
     <div class="container">
 
-        <!-- Tampilan awal -->
+        <!-- JUDUL -->
 
         <h1>🌸 HALLOO! 🌸</h1>
 
@@ -153,53 +424,160 @@
         </p>
 
 
-        <!-- Menu -->
+        <!-- MENU -->
 
         <div class="menu">
 
-            <!-- YouTube -->
-
-            <button class="youtube" onclick="bukaYoutube()">
+            <button
+                class="youtube"
+                onclick="bukaYoutube()"
+            >
                 ▶️ YouTube Favorit
             </button>
 
 
-            <!-- Instagram -->
-
-            <button class="instagram" onclick="bukaInstagram()">
+            <button
+                class="instagram"
+                onclick="bukaInstagram()"
+            >
                 📸 Instagram Saya
             </button>
 
 
-            <!-- Biodata -->
-
-            <button class="biodata" onclick="tampilkanBiodata()">
+            <button
+                class="biodata"
+                onclick="tampilkanBiodata()"
+            >
                 👤 Biodata Singkat Saya
             </button>
 
         </div>
 
 
-        <!-- Biodata -->
+        <!-- FUN FACTS -->
+
+        <div class="funfacts">
+
+            <h2>
+                ✨ Fun Facts Tentang Aku ✨
+            </h2>
+
+
+            <div class="cards">
+
+                <!-- HOBI -->
+
+                <div class="card">
+
+                    <div class="emoji">
+                        💃
+                    </div>
+
+                    <h3>
+                        Hobi
+                    </h3>
+
+                    <p>
+                        Menari
+                    </p>
+
+                </div>
+
+
+                <!-- MEMBACA -->
+
+                <div class="card">
+
+                    <div class="emoji">
+                        📚
+                    </div>
+
+                    <h3>
+                        Suka
+                    </h3>
+
+                    <p>
+                        Membaca buku
+                    </p>
+
+                </div>
+
+
+                <!-- MEMASAK -->
+
+                <div class="card">
+
+                    <div class="emoji">
+                        🍳
+                    </div>
+
+                    <h3>
+                        Hobi Lain
+                    </h3>
+
+                    <p>
+                        Memasak
+                    </p>
+
+                </div>
+
+
+                <!-- MUSIK -->
+
+                <div
+                    class="card musik"
+                    onclick="bukaMusik()"
+                >
+
+                    <div class="emoji">
+                        🎧
+                    </div>
+
+                    <h3>
+                        Musik Favorit
+                    </h3>
+
+                    <p>
+                        About You - The 1975
+                    </p>
+
+                    <small>
+                        ▶️ Klik untuk dengar
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BIODATA -->
 
         <div id="biodataBox">
 
-            <h2>👤 Biodata Sashira</h2>
+            <h2>
+                👤 Biodata Sashira
+            </h2>
+
 
             <p>
                 <b>Nama Lengkap:</b><br>
                 Sashira Iqlima Prasetyo
             </p>
 
+
             <p>
                 <b>Nama Panggilan:</b><br>
                 Ira / Shira
             </p>
 
+
             <p>
                 <b>Umur:</b><br>
                 16 tahun
             </p>
+
 
             <p>
                 Halo! Nama saya Sashira Iqlima Prasetyo.
@@ -207,9 +585,10 @@
             </p>
 
 
-            <!-- Tombol kembali -->
-
-            <button class="back" onclick="tutupBiodata()">
+            <button
+                class="back"
+                onclick="tutupBiodata()"
+            >
                 🔙 Kembali
             </button>
 
@@ -218,9 +597,9 @@
     </div>
 
 
-    <script>
+    <!-- JAVASCRIPT -->
 
-        // Membuka YouTube Windah Basudara
+    <script>
 
         function bukaYoutube() {
 
@@ -232,8 +611,6 @@
         }
 
 
-        // Membuka Instagram Sashira
-
         function bukaInstagram() {
 
             window.open(
@@ -244,24 +621,35 @@
         }
 
 
-        // Menampilkan biodata
+        function bukaMusik() {
 
-        function tampilkanBiodata() {
-
-            document.getElementById("biodataBox").style.display = "block";
+            window.open(
+                "https://youtu.be/tGv7CUutzqU?si=Ub-ex8bgZq8eCmb3",
+                "_blank"
+            );
 
         }
 
 
-        // Menutup biodata
+        function tampilkanBiodata() {
+
+            document.getElementById(
+                "biodataBox"
+            ).style.display = "block";
+
+        }
+
 
         function tutupBiodata() {
 
-            document.getElementById("biodataBox").style.display = "none";
+            document.getElementById(
+                "biodataBox"
+            ).style.display = "none";
 
         }
 
     </script>
 
 </body>
+
 </html>
