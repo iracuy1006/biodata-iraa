@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,11 +16,14 @@
             margin: 0;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #ffd6e7, #d8e7ff);
+            background-size: 200% 200%;
             min-height: 100vh;
 
             display: flex;
             justify-content: center;
             align-items: center;
+
+            animation: backgroundGerak 8s ease infinite;
         }
 
         .container {
@@ -30,18 +34,41 @@
             text-align: center;
 
             border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+
+            animation: masuk 0.8s ease;
+        }
+
+        /* FOTO */
+
+        .foto {
+            width: 190px;
+            height: 190px;
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 6px solid white;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.2);
+
+            animation: fotoMasuk 1s ease;
         }
 
         h1 {
             color: #d94f83;
             margin-bottom: 10px;
+
+            animation: judulMasuk 1s ease;
         }
 
         .welcome {
             font-size: 18px;
             color: #555;
             line-height: 1.6;
+
+            animation: munculPelan 1.2s ease;
         }
 
         .menu {
@@ -59,14 +86,29 @@
             color: white;
             cursor: pointer;
             transition: 0.3s;
+
+            animation: tombolMasuk 0.7s ease backwards;
+        }
+
+        .menu button:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .menu button:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .menu button:nth-child(3) {
+            animation-delay: 0.7s;
         }
 
         button:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-3px);
             opacity: 0.9;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
         }
 
-        /* Warna tombol */
+        /* WARNA TOMBOL */
 
         .youtube {
             background-color: #ff0000;
@@ -85,7 +127,7 @@
             background-color: #7b61ff;
         }
 
-        /* Kotak biodata */
+        /* KOTAK BIODATA */
 
         #biodataBox {
             display: none;
@@ -98,7 +140,7 @@
 
             text-align: left;
 
-            animation: muncul 0.5s ease;
+            animation: biodataMasuk 0.5s ease;
         }
 
         #biodataBox h2 {
@@ -117,12 +159,38 @@
             width: 100%;
         }
 
-        /* Animasi */
+        /* =========================
+           ANIMASI
+           ========================= */
 
-        @keyframes muncul {
+        @keyframes masuk {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: scale(0.9) translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes fotoMasuk {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes judulMasuk {
+            from {
+                opacity: 0;
+                transform: translateY(-25px);
             }
 
             to {
@@ -130,6 +198,55 @@
                 transform: translateY(0);
             }
         }
+
+        @keyframes munculPelan {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes tombolMasuk {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes biodataMasuk {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes backgroundGerak {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
     </style>
 </head>
 
@@ -137,7 +254,15 @@
 
     <div class="container">
 
-        <!-- Tampilan awal -->
+        <!-- FOTO PROFIL -->
+
+        <img
+            src="foto.jpg"
+            alt="Foto Sashira"
+            class="foto"
+        >
+
+        <!-- JUDUL -->
 
         <h1>🌸 HALLOO! 🌸</h1>
 
@@ -152,35 +277,34 @@
             Silakan pilih menu di bawah ini 👇
         </p>
 
-
-        <!-- Menu -->
+        <!-- MENU -->
 
         <div class="menu">
 
-            <!-- YouTube -->
-
-            <button class="youtube" onclick="bukaYoutube()">
+            <button
+                class="youtube"
+                onclick="bukaYoutube()"
+            >
                 ▶️ YouTube Favorit
             </button>
 
-
-            <!-- Instagram -->
-
-            <button class="instagram" onclick="bukaInstagram()">
+            <button
+                class="instagram"
+                onclick="bukaInstagram()"
+            >
                 📸 Instagram Saya
             </button>
 
-
-            <!-- Biodata -->
-
-            <button class="biodata" onclick="tampilkanBiodata()">
+            <button
+                class="biodata"
+                onclick="tampilkanBiodata()"
+            >
                 👤 Biodata Singkat Saya
             </button>
 
         </div>
 
-
-        <!-- Biodata -->
+        <!-- BIODATA -->
 
         <div id="biodataBox">
 
@@ -206,10 +330,10 @@
                 Kalian bisa memanggil saya Ira atau Shira. 💗
             </p>
 
-
-            <!-- Tombol kembali -->
-
-            <button class="back" onclick="tutupBiodata()">
+            <button
+                class="back"
+                onclick="tutupBiodata()"
+            >
                 🔙 Kembali
             </button>
 
@@ -220,7 +344,7 @@
 
     <script>
 
-        // Membuka YouTube Windah Basudara
+        // Membuka YouTube
 
         function bukaYoutube() {
 
@@ -232,7 +356,7 @@
         }
 
 
-        // Membuka Instagram Sashira
+        // Membuka Instagram
 
         function bukaInstagram() {
 
@@ -264,4 +388,5 @@
     </script>
 
 </body>
+
 </html>
