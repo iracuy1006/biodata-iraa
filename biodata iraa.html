@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Biodata Sashira Iqlima Prasetyo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffd6e7, #d8e7ff);
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 550px;
+            padding: 35px;
+            text-align: center;
+
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            color: #d94f83;
+            margin-bottom: 10px;
+        }
+
+        .welcome {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        button {
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Warna tombol */
+
+        .youtube {
+            background-color: #ff0000;
+        }
+
+        .instagram {
+            background: linear-gradient(
+                45deg,
+                #feda75,
+                #d62976,
+                #4f5bd5
+            );
+        }
+
+        .biodata {
+            background-color: #7b61ff;
+        }
+
+        /* Kotak biodata */
+
+        #biodataBox {
+            display: none;
+
+            margin-top: 25px;
+            padding: 20px;
+
+            background-color: #f8f1ff;
+            border-radius: 15px;
+
+            text-align: left;
+
+            animation: muncul 0.5s ease;
+        }
+
+        #biodataBox h2 {
+            color: #7b61ff;
+            text-align: center;
+        }
+
+        #biodataBox p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .back {
+            background-color: #777;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        /* Animasi */
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Tampilan awal -->
+
+        <h1>🌸 HALLOO! 🌸</h1>
+
+        <p class="welcome">
+            Selamat datang di website biodata
+            <br>
+
+            <b>Sashira Iqlima Prasetyo</b> 💗
+        </p>
+
+        <p>
+            Silakan pilih menu di bawah ini 👇
+        </p>
+
+
+        <!-- Menu -->
+
+        <div class="menu">
+
+            <!-- YouTube -->
+
+            <button class="youtube" onclick="bukaYoutube()">
+                ▶️ YouTube Favorit
+            </button>
+
+
+            <!-- Instagram -->
+
+            <button class="instagram" onclick="bukaInstagram()">
+                📸 Instagram Saya
+            </button>
+
+
+            <!-- Biodata -->
+
+            <button class="biodata" onclick="tampilkanBiodata()">
+                👤 Biodata Singkat Saya
+            </button>
+
+        </div>
+
+
+        <!-- Biodata -->
+
+        <div id="biodataBox">
+
+            <h2>👤 Biodata Sashira</h2>
+
+            <p>
+                <b>Nama Lengkap:</b><br>
+                Sashira Iqlima Prasetyo
+            </p>
+
+            <p>
+                <b>Nama Panggilan:</b><br>
+                Ira / Shira
+            </p>
+
+            <p>
+                <b>Umur:</b><br>
+                16 tahun
+            </p>
+
+            <p>
+                Halo! Nama saya Sashira Iqlima Prasetyo.
+                Kalian bisa memanggil saya Ira atau Shira. 💗
+            </p>
+
+
+            <!-- Tombol kembali -->
+
+            <button class="back" onclick="tutupBiodata()">
+                🔙 Kembali
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Membuka YouTube Windah Basudara
+
+        function bukaYoutube() {
+
+            window.open(
+                "https://youtube.com/@windahbasudara?si=EqZhEavwojRj-bev",
+                "_blank"
+            );
+
+        }
+
+
+        // Membuka Instagram Sashira
+
+        function bukaInstagram() {
+
+            window.open(
+                "https://www.instagram.com/supersa.sashira?igsi=MXFsMms5YzluNzl0bg==",
+                "_blank"
+            );
+
+        }
+
+
+        // Menampilkan biodata
+
+        function tampilkanBiodata() {
+
+            document.getElementById("biodataBox").style.display = "block";
+
+        }
+
+
+        // Menutup biodata
+
+        function tutupBiodata() {
+
+            document.getElementById("biodataBox").style.display = "none";
+
+        }
+
+    </script>
+
+</body>
+</html>
